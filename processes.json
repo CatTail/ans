@@ -1,0 +1,11 @@
+{
+    "apps" : [{
+        "name" : "proxy",
+        "script" : "index.js",
+        "ignoreWatch" : ["[\\/\\\\]\\./", "node_modules"],
+        "watch" : "true",
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }]
+}
