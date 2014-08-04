@@ -1,4 +1,4 @@
-node-dynamic-http-proxy
+ANS
 =======================
 
-NodeJS dynamic http proxy
+Application Name Service - Bind domain name with IP and Port

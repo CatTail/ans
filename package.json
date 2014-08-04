@@ -1,23 +1,23 @@
 {
-  "name": "node-dynamic-http-proxy",
-  "version": "0.0.0",
-  "description": "NodeJS dynamic http proxy with ease - Support dynamic IP and Port",
+  "name": "ans",
+  "version": "0.0.1",
+  "description": "Application Name Service - Bind domain name with IP and Port",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/CatTail/node-dynamic-http-proxy.git"
+    "url": "git://github.com/CatTail/ans.git"
   },
   "author": "CatTail",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CatTail/node-dynamic-http-proxy/issues"
+    "url": "https://github.com/CatTail/ans/issues"
   },
-  "homepage": "https://github.com/CatTail/node-dynamic-http-proxy",
+  "homepage": "https://github.com/CatTail/ans",
   "keywords": [
-    "proxy"
+    "http", "proxy"
   ],
   "dependencies": {
     "http-proxy": "^1.1.6",
