@@ -17,12 +17,18 @@
   },
   "homepage": "https://github.com/CatTail/ans",
   "keywords": [
-    "http", "proxy"
+    "http",
+    "proxy"
   ],
   "dependencies": {
+    "express": "^4.7.4",
+    "hiredis": "^0.1.17",
     "http-proxy": "^1.1.6",
-    "koa": "^0.8.2",
-    "koa-route": "^1.1.4",
-    "minimatch": "^1.0.0"
+    "minimatch": "^1.0.0",
+    "morgan": "^1.2.2",
+    "redis": "^0.11.0",
+    "serve-static": "^1.4.4",
+    "vhost": "^2.0.0",
+    "vhostess": "^1.0.0"
   }
 }
