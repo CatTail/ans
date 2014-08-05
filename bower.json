@@ -1,0 +1,22 @@
+{
+  "name": "ans",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/CatTail/ans",
+  "authors": [
+    "zhongchiyu <zhongchiyu@gmail.com>"
+  ],
+  "description": "Application Name Service - Bind domain name with IP and Port",
+  "keywords": [
+    "proxy",
+    "http"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
