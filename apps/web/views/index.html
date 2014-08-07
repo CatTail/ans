@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ANS manager</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/vender/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vender/angular-toastr/dist/angular-toastr.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="MainController">
+      <div class="container">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <td>Host</td>
+                      <td>Address</td>
+                      <td>
+                          <button type="button" class="btn btn-primary btn-xs" data-animation="am-fade-and-scale" data-template="/static/modal.html" bs-modal="modal">Create</button>
+                      </td>
+                  </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="rule in rules">
+                  <td>{{ rule.host }}</td>
+                  <td>{{ rule.address }}</td>
+                  <td>
+                      <button type="button" class="btn btn-warning btn-xs" ng-click="updateRule(rule)">Edit</button>
+                      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteRule(rule)">Delete</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>rule.host</td>
+                  <td>rule.address</td>
+                  <td>
+                      <button type="button" class="btn btn-warning btn-xs" ng-click="updateRule(rule)">Edit</button>
+                      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteRule(rule)">Delete</button>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div> <!-- .container -->
+
+      <script src="/static/vender/jquery/dist/jquery.min.js"></script>
+      <script src="/static/vender/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="/static/vender/angular/angular.js" type="text/javascript" charset="utf-8"></script>
+      <script src="/static/vender/angular-resource/angular-resource.js" type="text/javascript" charset="utf-8"></script>
+      <script src="/static/vender/angular-toastr/dist/angular-toastr.js" type="text/javascript" charset="utf-8"></script>
+      <script src="/static/vender/angular-strap/dist/angular-strap.js" type="text/javascript" charset="utf-8"></script>
+      <script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
