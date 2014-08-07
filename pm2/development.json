@@ -1,0 +1,11 @@
+{
+    "apps" : [{
+        "name" : "development",
+        "script" : "index.js",
+        "ignoreWatch" : ["node_modules"],
+        "watch" : ["index.js", "apps", "config"],
+        "env": {
+            "NODE_ENV": "development"
+        }
+    }]
+}

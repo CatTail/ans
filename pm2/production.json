@@ -1,0 +1,9 @@
+{
+    "apps" : [{
+        "name" : "production",
+        "script" : "index.js",
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }]
+}
