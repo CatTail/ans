@@ -18,5 +18,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular-strap": "~2.0.5",
+    "angular-latest": "~1.2.21",
+    "angular-resource": "~1.2.21",
+    "angular-toastr": "~0.3.0"
+  }
 }
