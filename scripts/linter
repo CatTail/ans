@@ -1,0 +1,49 @@
+#! /usr/bin/env node
+
+var fs = require('fs'),
+    path = require('path'),
+    child_process = require('child_process');
+
+var root = process.cwd();
+while (!fs.existsSync(path.join(root, 'package.json'))) {
+    root = path.dirname(root);
+}
+var bin = path.join(root, 'node_modules/.bin');
+
+var changes;
+
+var diff = child_process.spawn('git', ['diff', '--name-only', '--staged']);
+diff.stdout.on('data', function(chunk) {
+    changes = chunk.toString().trim().split('\n');
+    // jshint changed javascript files
+    lint('jshint', filterByExtension('.js'), function() {
+        // csshint changed css files
+        lint('csslint', filterByExtension('.css'));
+    });
+});
+
+function lint(linterName, filter, cb) {
+    var args = changes.filter(filter);
+    if (args.length) { // only lint if specific file changes
+        var linter =
+            child_process.spawn(path.join(bin, linterName), args, {cwd: root});
+        linter.stdout.on('data', function(chunk) {
+            console.log(chunk.toString());
+        });
+        linter.on('exit', function(code) {
+            if (code) {
+                process.exit(code);
+            } else {
+                cb & cb();
+            }
+        });
+    } else {
+        cb && cb();
+    }
+}
+
+function filterByExtension(ext) {
+    return function(file) {
+        return path.extname(file) === ext;
+    };
+}

@@ -1,6 +1,6 @@
 {
   "name": "ans",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Application Name Service - Bind domain name with IP and Port",
   "main": "index.js",
   "scripts": {
@@ -30,5 +30,10 @@
     "serve-static": "^1.4.4",
     "vhost": "^2.0.0",
     "vhostess": "^1.0.0"
+  },
+  "devDependencies": {
+    "csslint": "^0.10.0",
+    "gulp": "^3.8.7",
+    "jshint": "^2.5.2"
   }
 }
