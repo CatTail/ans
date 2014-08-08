@@ -1,0 +1,27 @@
+<div class="modal" tabindex="-1" role="dialog" style="display: block;">
+    <form class="form for-vertical" ng-submit="createRule()">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="text-danger">Create Rule</h4>
+                    <div class="form-group">
+                        <label for="host">Host</label>
+                        <input type="TEXT" class="form-control" id="host" ng-modal="host" placeholder="Enter host">
+                    </div>
+                    <div class="form-group">
+                        <label for="ip">IP</label>
+                        <input type="TEXT" class="form-control" id="ip" ng-modal="ip" placeholder="Enter ip">
+                    </div>
+                    <div class="form-group">
+                        <label for="port">Port</label>
+                        <input type="TEXT" class="form-control" id="port" ng-modal="port" placeholder="Enter port">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>
+                    <button type="submit" class="btn btn-danger" ng-click="$hide()">Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngResource', 'toastr']);
+var app = angular.module('app', ['ngResource', 'toastr', 'mgcrea.ngStrap']);
 
 angular.module('app').factory('Rule', ['$resource', function ($resource) {
     return $resource('/api/rule/:ruleId', {
@@ -23,5 +23,10 @@ angular.module('app').controller('MainController', ['$scope', 'Rule', 'toastr', 
         }, function(res) {
             toastr.error(res.data, 'Error');
         });
+    };
+
+    $scope.createRule = function() {
+        console.log(arguments);
+        console.log($scope);
     };
 }]);
