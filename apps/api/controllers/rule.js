@@ -40,6 +40,7 @@ exports.getRuleList = function(req, res, next) {
         if (err) { return next(err); }
         var args = ['rule'];
         args.push(hosts);
+        args = args.concat(hosts);
         redis.hmget(args, function(err, addresses) {
             if (err) { return next(err); }
             var rules = hosts.map(function(host, index) {
