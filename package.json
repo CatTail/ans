@@ -1,6 +1,6 @@
 {
   "name": "ans",
-  "version": "0.0.12",
+  "version": "0.0.15",
   "description": "Application Name Service - Bind domain name with IP and Port",
   "main": "index.js",
   "scripts": {

@@ -1,10 +1,12 @@
 var minimatch = require('minimatch'),
     redis = require('redis').createClient(),
-    proxy = require('http-proxy').createProxy();
+    proxy = require('http-proxy').createProxy(),
+    Rule = require('../../model/rule');
 
-var app = exports = module.exports = require('express')();
+var app;
+app = exports = module.exports = require('express')();
 
-redis.get('rules', function(err, rules) {
+Rule.getRuleList(function(err, rules) {
     if (err) { throw err; }
 
     app.use(function (req, res, next) {
