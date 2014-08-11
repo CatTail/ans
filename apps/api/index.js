@@ -1,10 +1,13 @@
 var express = require('express'),
+    bodyParser = require('body-parser'),
     router = express.Router(),
     util = require('util'),
     logger = require('winston'),
     app;
 
 app = exports = module.exports = express();
+
+app.use(bodyParser.urlencoded());
 
 app.use(require('./routes/rule'));
 app.use(require('./routes/domain'));
