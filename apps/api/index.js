@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res,  next) {
     if (!err) { return next(); }
 
-    logger.error(util.inspect(err));
+    logger.error(util.inspect(err.stack || err.message || err));
     res.status(err.status || 500);
     res.json(err.stack || err.message || err);
 });

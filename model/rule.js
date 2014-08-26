@@ -1,48 +1,35 @@
-var Rule;
+var low = require('lowdb');
+low.load();
+
+var Collection = low('rule'),
+    Rule;
+
 Rule = exports = module.exports = {};
 
 Rule.createRule = function(host, address, cb) {
-    redis.hset('rule', host, address, function(err) {
-        if (err) { return cb(err); }
-        cb(null, {host: host, address: address});
-    });
+    var rule = {host: host, address: address};
+    Collection.insert(rule);
+    cb(null, rule);
 };
 
 Rule.getRule = function(host, cb) {
-    redis.hget('rule', host, function(err, address) {
-        cb(null, {host: host, address: address});
-    });
+    var rule = Collection.find({host: host});
+    cb(null, rule);
 };
 
 Rule.updateRule = function(host, newHost, newAddress, cb) {
-    if (host !== newHost) {
-        rule.deleteRule(host, function(err) {
-            if (err) { return cb(err); }
-            rule.createRule(newHost, newAddress, cb);
-        });
-    } else {
-        rule.createRule(newHost, newAddress, cb);
-    }
+    var newRule = {host: newHost, address: newAddress};
+    Collection.updateWhere({host: host}, newRule);
+    cb(null, newRule);
 };
 
 Rule.deleteRule = function(host, cb) {
-    rule.getRule(host, function(err, rule) {
-        if (err) { return cb(err); }
-        redis.hdel('rule', host, function(err) {
-            if (err) { return cb(err); }
-            cb(null, rule);
-        });
-    });
+    var rule = Collection.find({host: host});
+    Collection.removeWhere({host: host});
+    cb(null, rule);
 };
 
 Rule.getRuleList = function(cb) {
-    redis.hkeys('rule', function(err, hosts) {
-        if (err) { return cb(err); }
-        redis.hmget(['rule'].concat(hosts), function(err, addresses) {
-            if (err) { return cb(err); }
-            cb(null, hosts.map(function(host, index) {
-                return {host: host, address: addresses[index]};
-            }));
-        });
-    });
+    var rules = Collection.value();
+    cb(null, rules);
 };

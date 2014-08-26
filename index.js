@@ -1,18 +1,27 @@
-var express = require('express'),
+var fs = require('fs'),
+    http = require('http'),
+    https = require('https'),
+    express = require('express'),
     logger = require('morgan'),
     vhost = require('vhost'),
     config = require('./config');
 
-var app = express();
+var httpServer = express();
+var httpsServer = express();
 var proxyServer = require('./apps/proxy');
 var apiServer = require('./apps/api');
 var webServer = require('./apps/web');
 
-app.use(logger('dev'));
+httpServer.use(logger('dev'));
 
-app.use(vhost(config.domain, webServer));
-app.use(vhost('api.' + config.domain, apiServer));
-app.use(proxyServer);
+httpServer.use(vhost(config.domain, webServer));
+httpServer.use(vhost('api.' + config.domain, apiServer));
+httpServer.use(proxyServer);
+httpsServer.use(proxyServer);
 
-app.listen(config.port);
+http.createServer(httpServer).listen(config.port);
+https.createServer({
+    key: fs.readFileSync('./ssl/ca.key', 'utf8'),
+    cert: fs.readFileSync('./ssl/ca.crt', 'utf8')
+}, httpsServer).listen(config.httpsPort);
 console.log('Express listen on:' + config.port);
