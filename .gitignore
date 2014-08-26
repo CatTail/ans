@@ -27,4 +27,6 @@ static/vender
 
 *.swp
 
+ssl/
 config/domain.json
+db.json

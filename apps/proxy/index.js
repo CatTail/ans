@@ -1,5 +1,4 @@
 var minimatch = require('minimatch'),
-    redis = require('redis').createClient(),
     proxy = require('http-proxy').createProxy(),
     debug = require('debug')('proxy'),
     Rule = require('../../model/rule');
@@ -9,11 +8,12 @@ app = exports = module.exports = require('express')();
 
 app.use(function (req, res, next) {
     Rule.getRuleList(function(err, rules) {
-        if (err) { throw err; }
+        if (err) { throw err;  }
 
         var match = rules.some(function(rule) {
-            if (minimatch(req.header('host'), rule.host)) {
-                proxy.web(req, res, { target: rule.address }, next);
+            if (minimatch(req.protocol + '://' + req.header('host'), rule.host)) {
+                var secure = req.protocol === 'https';
+                proxy.web(req, res, { target: rule.address, secure: secure }, next);
                 return true;
             }
         });

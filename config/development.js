@@ -1,7 +1,7 @@
 var winston = require('winston');
 
 exports = module.exports = {
-    port: 8081
+    port: 8091
 };
 
 winston.remove(winston.transports.Console);
