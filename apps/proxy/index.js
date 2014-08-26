@@ -12,8 +12,7 @@ app.use(function (req, res, next) {
 
         var match = rules.some(function(rule) {
             if (minimatch(req.protocol + '://' + req.header('host'), rule.host)) {
-                var secure = req.protocol === 'https';
-                proxy.web(req, res, { target: rule.address, secure: secure }, next);
+                proxy.web(req, res, { target: rule.address }, next);
                 return true;
             }
         });
