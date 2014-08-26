@@ -2,6 +2,7 @@
     "apps" : [{
         "name" : "production",
         "script" : "index.js",
+        "watch" : ["db.json"],
         "env": {
             "NODE_ENV": "production"
         }
