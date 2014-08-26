@@ -7,9 +7,17 @@ var Collection = low('rule'),
 Rule = exports = module.exports = {};
 
 Rule.createRule = function(host, address, cb) {
-    var rule = {host: host, address: address};
-    Collection.insert(rule);
-    cb(null, rule);
+    var newRule = {host: host, address: address};
+    Rule.getRule(newRule.host, function(err, rule) {
+        if (err) { return cb(err); }
+        // update if host already exist
+        if (rule) {
+            Rule.updateRule(rule.host, newRule.host, newRule.address, cb);
+        } else {
+            Collection.insert(newRule);
+            cb(null, rule);
+        }
+    });
 };
 
 Rule.getRule = function(host, cb) {
