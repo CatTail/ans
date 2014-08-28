@@ -29,4 +29,5 @@ static/vender
 
 ssl/
 config/domain.json
+config/private.json
 db.json

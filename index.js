@@ -4,7 +4,16 @@ var fs = require('fs'),
     express = require('express'),
     logger = require('morgan'),
     vhost = require('vhost'),
-    config = require('./config');
+    config = require('./config'),
+    StatsD = require('node-statsd').StatsD;
+
+// statsd
+new StatsD({
+    host: config.statsd.host,
+    port: config.statsd.port,
+    prefix: config.statsd.prefix,
+    globalize: true
+});
 
 var httpServer = express();
 var httpsServer = express();

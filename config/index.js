@@ -6,4 +6,4 @@ exports = module.exports = {
     httpsPort: 443
 };
 
-_.extend(exports, require(exports.DEBUG ? './development' : './production'));
+_.extend(exports, require(exports.DEBUG ? './development' : './production'), require('./private.json'));
