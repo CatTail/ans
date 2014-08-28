@@ -7,11 +7,13 @@ var app;
 app = exports = module.exports = require('express')();
 
 app.use(function (req, res, next) {
+    statsd.increment('usage._t_ip' + req.ip);
     Rule.getRuleList(function(err, rules) {
         if (err) { throw err;  }
 
         var match = rules.some(function(rule) {
             if (minimatch(req.protocol + '://' + req.header('host'), rule.host)) {
+                statsd.increment('usage._t_rule' + rule.host);
                 proxy.web(req, res, { target: rule.address, secure: false }, next);
                 return true;
             }
