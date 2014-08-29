@@ -9,5 +9,5 @@ var client = new Client({
 });
 
 for (var i=0; i<100; i++) {
-    client.increment('my_counter');
+    client.increment('test._t_user.cattail');
 }
